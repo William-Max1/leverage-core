@@ -8,7 +8,9 @@ import "./interfaces/ICollateral.sol";
 import "./interfaces/IERC20.sol";
 import "./interfaces/IUniswapV2Pair.sol";
 import "./interfaces/ITarotPriceOracle.sol";
-
+/**
+ * @dev The contract to deploy other contracts
+ */
 contract Factory is IFactory {
     address public admin;
     address public pendingAdmin;
