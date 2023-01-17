@@ -23,8 +23,10 @@ contract Collateral is ICollateral, PoolToken, CStorage, CSetter {
     function getPrices() public returns (uint256 price0, uint256 price1) {
         (uint224 twapPrice112x112, ) =
             ITarotPriceOracle(tarotPriceOracle).getResult(underlying);
-        (uint112 reserve0, uint112 reserve1, ) =
+        (uint256 r0, uint256 r1, ) =
             IUniswapV2Pair(underlying).getReserves();
+        uint112 reserve0 = safe112(r0);
+        uint112 reserve1 = safe112(r1);
         uint256 collateralTotalSupply =
             IUniswapV2Pair(underlying).totalSupply();
 
